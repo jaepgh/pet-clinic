@@ -14,7 +14,7 @@
     </parent>
     <groupId>jaep.springframwork</groupId>
     <artifactId>pet-clinic</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>Pet Clinic</name>
     <description>Demo project for Spring Boot</description>
 
@@ -39,10 +39,8 @@
     </build>
 
     <scm>
-        <connection>scm:git:https://github.com/jaepgh/pet-clinic.git</connection>
         <developerConnection>scm:git:git@github.com:jaepgh/pet-clinic.git</developerConnection>
-        <url>https://github.com/jaepgh/pet-clinic.git</url>
-        <tag>pet-clinic-0.0.1</tag>
+        <tag>HEAD</tag>
   </scm>
 
 </project>
