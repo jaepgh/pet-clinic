@@ -1,4 +1,4 @@
-package jaep.springframwork.petclinic.model;
+package petclinic.model;
 
 public class PetType {
 
