@@ -39,8 +39,10 @@
     </build>
 
     <scm>
+        <connection>scm:git:https://github.com/jaepgh/pet-clinic.git</connection>
         <developerConnection>scm:git:git@github.com:jaepgh/pet-clinic.git</developerConnection>
-      <tag>HEAD</tag>
+        <url>https://github.com/jaepgh/pet-clinic.git</url>
+        <tag>HEAD</tag>
   </scm>
 
 </project>
