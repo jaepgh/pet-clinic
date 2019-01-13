@@ -1,12 +1,8 @@
 package jaep.springframework.services;
 
 import jaep.springframework.model.Owner;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.Set;
-
-public interface OwnerService {
+public interface OwnerService extends CrudRepository<Owner, Long> {
     Owner findByLastName(String lastName);
-    Owner findById(Long id);
-    Owner save(Owner owner);
-    Set<Owner> findAll();
 }
