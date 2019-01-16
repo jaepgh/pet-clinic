@@ -1,10 +1,12 @@
-package jaep.springframework.services.map;
+package jaep.springframework.petclinic.services.map;
 
-import jaep.springframework.model.Pet;
-import jaep.springframework.services.PetService;
+import jaep.springframework.petclinic.model.Pet;
+import jaep.springframework.petclinic.services.PetService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Set<Pet> findAll() {

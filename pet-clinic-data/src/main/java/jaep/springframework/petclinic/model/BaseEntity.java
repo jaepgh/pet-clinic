@@ -1,4 +1,4 @@
-package jaep.springframework.model;
+package jaep.springframework.petclinic.model;
 
 import java.io.Serializable;
 

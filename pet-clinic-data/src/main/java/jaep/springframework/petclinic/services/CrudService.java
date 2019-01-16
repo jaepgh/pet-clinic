@@ -1,4 +1,4 @@
-package jaep.springframework.services;
+package jaep.springframework.petclinic.services;
 
 import java.util.Set;
 

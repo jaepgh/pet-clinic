@@ -1,4 +1,4 @@
-package jaep.springframework.model;
+package jaep.springframework.petclinic.model;
 
 public class PetType extends BaseEntity {
 

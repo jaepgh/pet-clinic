@@ -1,10 +1,10 @@
-package jaep.springframwork.petclinic.bootstrap;
+package jaep.springframework.petclinic.bootstrap;
 
-import jaep.springframework.model.Owner;
-import jaep.springframework.services.OwnerService;
-import jaep.springframework.services.VetService;
-import jaep.springframework.services.map.OwnerServiceMap;
-import jaep.springframework.services.map.VetServiceMap;
+import jaep.springframework.petclinic.model.Owner;
+import jaep.springframework.petclinic.services.OwnerService;
+import jaep.springframework.petclinic.services.VetService;
+import jaep.springframework.petclinic.services.map.OwnerServiceMap;
+import jaep.springframework.petclinic.services.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,9 +14,9 @@ public class DataLoader implements CommandLineRunner {
     private  final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader() {
-        this.ownerService = new OwnerServiceMap();
-        this.vetService = new VetServiceMap();
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
