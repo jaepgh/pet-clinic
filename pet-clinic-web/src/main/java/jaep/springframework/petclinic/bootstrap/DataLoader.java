@@ -1,6 +1,7 @@
 package jaep.springframework.petclinic.bootstrap;
 
 import jaep.springframework.petclinic.model.Owner;
+import jaep.springframework.petclinic.model.Vet;
 import jaep.springframework.petclinic.services.OwnerService;
 import jaep.springframework.petclinic.services.VetService;
 import jaep.springframework.petclinic.services.map.OwnerServiceMap;
@@ -48,5 +49,28 @@ public class DataLoader implements CommandLineRunner {
         owner4.setLastName("Doe4");
 
         ownerService.save(owner4);
+
+        //---------------------------------------------------
+
+        Vet vet1 = new Vet();
+        vet1.setId(1L);
+        vet1.setFirstName("Juan");
+        vet1.setLastName("Perez");
+
+        vetService.save(vet1);
+
+        Vet vet2 = new Vet();
+        vet2.setId(2L);
+        vet2.setFirstName("John");
+        vet2.setLastName("Doe");
+
+        vetService.save(vet2);
+
+        Vet vet3 = new Vet();
+        vet3.setId(3L);
+        vet3.setFirstName("Jim");
+        vet3.setLastName("Cox");
+
+        vetService.save(vet3);
     }
 }
