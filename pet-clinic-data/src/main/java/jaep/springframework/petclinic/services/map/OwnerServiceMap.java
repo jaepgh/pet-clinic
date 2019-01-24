@@ -1,6 +1,7 @@
 package jaep.springframework.petclinic.services.map;
 
 import jaep.springframework.petclinic.model.Owner;
+import jaep.springframework.petclinic.model.Pet;
 import jaep.springframework.petclinic.services.OwnerService;
 import jaep.springframework.petclinic.services.PetService;
 import jaep.springframework.petclinic.services.PetTypeService;
@@ -51,7 +52,8 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
                     }
 
                     if (pet.getId() == null){
-                        petService.save(pet);
+                        Pet saved = petService.save(pet);
+                        pet.setId(saved.getId());
                     }
                 });
             }
