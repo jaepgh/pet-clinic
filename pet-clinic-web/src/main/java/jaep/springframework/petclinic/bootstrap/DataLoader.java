@@ -1,10 +1,14 @@
 package jaep.springframework.petclinic.bootstrap;
 
 import jaep.springframework.petclinic.model.Owner;
+import jaep.springframework.petclinic.model.PetType;
 import jaep.springframework.petclinic.model.Vet;
 import jaep.springframework.petclinic.services.OwnerService;
+import jaep.springframework.petclinic.services.PetService;
+import jaep.springframework.petclinic.services.PetTypeService;
 import jaep.springframework.petclinic.services.VetService;
 import jaep.springframework.petclinic.services.map.OwnerServiceMap;
+import jaep.springframework.petclinic.services.map.PetServiceMap;
 import jaep.springframework.petclinic.services.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,10 +18,12 @@ public class DataLoader implements CommandLineRunner {
 
     private  final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
@@ -65,5 +71,17 @@ public class DataLoader implements CommandLineRunner {
         vet3.setLastName("Cox");
 
         vetService.save(vet3);
+
+        //---------------------------------------------------
+
+        PetType petType1 = new PetType();
+        petType1.setName("Dog");
+
+        PetType dog = petTypeService.save(petType1);
+
+        PetType petType2 = new PetType();
+        petType2.setName("Cat");
+
+        PetType cat = petTypeService.save(petType2);
     }
 }
