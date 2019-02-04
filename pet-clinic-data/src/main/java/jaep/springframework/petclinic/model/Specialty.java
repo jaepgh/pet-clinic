@@ -16,6 +16,6 @@ import java.io.Serializable;
 @Table(name = "specialties")
 public class Specialty extends BaseEntity implements Serializable {
 
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
 }
