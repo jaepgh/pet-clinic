@@ -1,8 +1,7 @@
 package jaep.springframework.petclinic.services.jpa;
 
-import jaep.springframework.petclinic.model.Owner;
-import jaep.springframework.petclinic.model.Pet;
-import jaep.springframework.petclinic.repositories.PetRepository;
+import jaep.springframework.petclinic.model.PetType;
+import jaep.springframework.petclinic.repositories.PetTypeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,41 +20,32 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class PetJpaServiceTest {
-
+class PetTypeJpaServiceTest {
     @InjectMocks
-    PetJpaService service;
+    PetTypeJpaService service;
 
     @Mock
-    PetRepository repository;
+    PetTypeRepository repository;
 
-    Pet p1;
+    PetType p1;
 
     @BeforeEach
     void setUp() {
-        Owner o1 = Owner.builder()
-                .firstName("John")
-                .lastName("Doe")
-                .build();
-        p1 = Pet.builder()
-                .owner(o1)
-                .name("Kitty")
-                .build();
-        p1.setId(2L);
+        p1 = PetType.builder().name("one").build();
+        p1.setId(1L);
     }
 
     @Test
     void findAll() {
-        Set<Pet> pets = new HashSet<>();
+        Set<PetType> pets = new HashSet<>();
         pets.add(p1);
 
         when(repository.findAll()).thenReturn(pets);
 
-        Set<Pet> petsReturn = service.findAll();
+        Set<PetType> petsReturn = service.findAll();
 
         assertNotNull(petsReturn);
-        assertEquals(petsReturn.size(),service.findAll().size());
-
+        assertEquals(pets.size(), petsReturn.size());
     }
 
     @Test
@@ -70,7 +60,7 @@ class PetJpaServiceTest {
     void save() {
         when(repository.save(any())).thenReturn(p1);
 
-        Pet petResult = service.save(p1);
+        PetType petResult = service.save(p1);
 
         assertNotNull(petResult);
         assertEquals(p1.getId(),petResult.getId());

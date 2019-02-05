@@ -28,10 +28,6 @@ class OwnerJpaServiceTest {
 
     @Mock
     OwnerRepository ownerRepository;
-    @Mock
-    PetRepository petRepository;
-    @Mock
-    PetTypeRepository petTypeRepository;
 
     Owner owner;
 
