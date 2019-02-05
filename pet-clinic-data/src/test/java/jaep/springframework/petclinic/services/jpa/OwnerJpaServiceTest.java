@@ -1,4 +1,4 @@
-package jaep.springframework.petclinicdata.services.jpa;
+package jaep.springframework.petclinic.services.jpa;
 
 import jaep.springframework.petclinic.model.Owner;
 import jaep.springframework.petclinic.repositories.OwnerRepository;

@@ -1,4 +1,4 @@
-package jaep.springframework.petclinicdata.services.map;
+package jaep.springframework.petclinic.services.map;
 
 import jaep.springframework.petclinic.model.Owner;
 import jaep.springframework.petclinic.services.map.OwnerServiceMap;
