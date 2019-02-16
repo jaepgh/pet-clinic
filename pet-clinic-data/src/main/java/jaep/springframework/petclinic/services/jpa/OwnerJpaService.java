@@ -32,7 +32,7 @@ public class OwnerJpaService implements OwnerService {
 
     @Override
     public Set<Owner> findAllByLastNameLike(String lastName) {
-        return ownerRepository.findAllByLastNameLike(lastName);
+        return ownerRepository.findAllByLastNameContainingIgnoreCase(lastName);
     }
 
     @Override
