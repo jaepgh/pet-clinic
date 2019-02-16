@@ -6,17 +6,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.Set;
 
 @Controller
 @RequestMapping({"/owners"})
 public class OwnerController {
+    private static final String VIEW_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
     private final OwnerService ownerService;
 
     public OwnerController(OwnerService ownerService) {
@@ -60,5 +59,40 @@ public class OwnerController {
         mav.addObject(ownerService.findByID(ownerId));
 
         return mav;
+    }
+
+    @GetMapping({"/new"})
+    public String initCreationForm(Model model){
+        model.addAttribute("owner", Owner.builder().build());
+
+        return VIEW_OWNER_CREATE_OR_UPDATE_FORM;
+    }
+
+    @PostMapping({"/new"})
+    public String processCreationForm(@Valid Owner owner, BindingResult result){
+        if (result.hasErrors()){
+            return VIEW_OWNER_CREATE_OR_UPDATE_FORM;
+        } else {
+            Owner saved = this.ownerService.save(owner);
+            return "redirect:/owners/" + saved.getId();
+        }
+    }
+
+    @GetMapping({"/{ownerId}/edit"})
+    public String initUpdateForm(@PathVariable("ownerId") Long ownerId, Model model){
+        Owner owner = ownerService.findByID(ownerId);
+        model.addAttribute("owner", owner);
+        return VIEW_OWNER_CREATE_OR_UPDATE_FORM;
+    }
+
+    @PostMapping({"/{ownerId}/edit"})
+    public String processUpdateForm(@Valid Owner owner, BindingResult result, @PathVariable("ownerId") Long ownerId){
+        if (result.hasErrors()){
+            return VIEW_OWNER_CREATE_OR_UPDATE_FORM;
+        } else {
+            owner.setId(ownerId);
+            Owner saved = this.ownerService.save(owner);
+            return "redirect:/owners/" + saved.getId();
+        }
     }
 }
