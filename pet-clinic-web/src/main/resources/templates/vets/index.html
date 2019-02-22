@@ -9,15 +9,19 @@
 
     <table class="table table-striped">
         <thead>
-        <th>Id</th>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Specialty</th>
         </thead>
         <tbody>
         <tr th:each="vet : ${vets}">
-            <td th:text="${vet.id}"></td>
             <td th:text="${vet.firstName}"></td>
             <td th:text="${vet.lastName}"></td>
+            <td>
+                <span th:each="spec : ${vet.getSpecialties()}"
+                      th:text="${spec.getDescription() +  ' '}"></span>
+                <span th:if="${vet?.getSpecialties().size() == 0}">None</span>
+            </td>
         </tr>
         </tbody>
     </table>
